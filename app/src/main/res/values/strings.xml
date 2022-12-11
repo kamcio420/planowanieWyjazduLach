@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">planowanieWyjazduLach</string>
+    <string name="hyperlink">Nie przepłacaj, znajdź najlepszą ofertę tutaj:\n<a href="https://fly.pl/szukaj-wycieczek/">Fly.pl</a></string>
 </resources>
