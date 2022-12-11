@@ -20,6 +20,20 @@ class MainActivity : AppCompatActivity() {
         val confirmButton = findViewById<Button>(R.id.sumDateButton)
         val outputText = findViewById<TextView>(R.id.tripLengthOutput)
 
+        var days = 0
+
+        //START BUTTON ACTION
+        startButton.setOnClickListener {
+            var selectedStartDate = calendar.date
+            outputText.text = selectedStartDate.toString()
+        }
+
+        //END BUTTON ACTION
+        endButton.setOnClickListener {
+            var selectedEndDate = calendar.date
+            outputText.text = selectedEndDate.toString()
+        }
+
     }
 
     //LINK ACTION
