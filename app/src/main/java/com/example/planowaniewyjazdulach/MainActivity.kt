@@ -22,23 +22,31 @@ class MainActivity : AppCompatActivity() {
         val endButton = findViewById<Button>(R.id.setTripEndButton)
         val confirmButton = findViewById<Button>(R.id.sumDateButton)
         val outputText = findViewById<TextView>(R.id.tripLengthOutput)
+        var selectedDate = " "
+        var selectedStartDate = " "
+        var selectedEndDate = " "
 
-        //GET CURRENT DATE
+        //PATTERN FOR DATE
         val pattern = SimpleDateFormat("dd/MM/yyyy")
 
         calendar.minDate = System.currentTimeMillis()
         calendar.maxDate = System.currentTimeMillis() + 63113904000 //2 years from current date
+        //GET SELECTED DATE
+        calendar.setOnDateChangeListener { view, year, month, day ->
+            var correctMonth = month + 1
+            selectedDate = "$day/$correctMonth/$year"
+        }
 
         //START BUTTON ACTION
         startButton.setOnClickListener {
-            var formatedStartDate = pattern.format(calendar.date)
-            outputText.text = "Ustawiono date wyjazdu na:\n" + formatedStartDate
+            selectedStartDate = selectedDate
+            outputText.text = "Ustawiono date wyjazdu na:\n" + selectedStartDate
         }
 
         //END BUTTON ACTION
         endButton.setOnClickListener {
-            var formatedEndDate = pattern.format(calendar.date)
-            outputText.text = "Ustawiono date przyjazdu na:\n" + formatedEndDate
+            selectedEndDate = selectedDate
+            outputText.text = "Ustawiono date powrotu na:\n" + selectedEndDate
         }
 
         //CONFIRM BUTTON ACTION
