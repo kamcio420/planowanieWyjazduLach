@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxDate="12/31/2024"
-        android:minDate="11/01/2022"
+        android:minDate="12/01/2022"
         android:selectedWeekBackgroundColor="#00BCD4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
