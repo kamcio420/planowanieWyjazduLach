@@ -51,8 +51,30 @@ class MainActivity : AppCompatActivity() {
 
         //CONFIRM BUTTON ACTION
         confirmButton.setOnClickListener {
-            var sumDate = " "
-            outputText.text = "Długość twojego wyjazdu :\n" + sumDate
+            val mDateFormat = SimpleDateFormat("MM/dd/yyyy")
+
+            val Date1 = mDateFormat.parse(selectedStartDate)
+            val Date2 = mDateFormat.parse(selectedEndDate)
+            val mDifference = kotlin.math.abs(Date1.time - Date2.time)
+
+            var mDifferenceDates:Long
+            if(Date1.time == Date2.time) {
+                mDifferenceDates = 1
+            }
+            else if(Date1.time > Date2.time) {
+                mDifferenceDates = 0
+            }
+            else {
+                mDifferenceDates =
+                    mDifference / (24 * 60 * 60 * 1000) / 31 + 2 //calculating days
+            }
+            val mDayDifference = mDifferenceDates.toString()
+            if(mDayDifference == "0") {
+                outputText.text = "Data powrotu nie moze byc szybciej od daty wyjazdu!"
+            }
+            else {
+                outputText.text = "Długość twojego wyjazdu :\n" + mDayDifference + " dni"
+            }
         }
 
     }
