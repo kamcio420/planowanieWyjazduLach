@@ -10,10 +10,12 @@ import androidx.appcompat.app.AppCompatActivity
 import java.text.SimpleDateFormat
 
 class MainActivity : AppCompatActivity() {
-    @SuppressLint("SimpleDateFormat")
+    @SuppressLint("SimpleDateFormat", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //LINK
         setupHyperlink()
 
         //DECLARATIONS
@@ -26,14 +28,13 @@ class MainActivity : AppCompatActivity() {
         var selectedStartDate = " "
         var selectedEndDate = " "
 
-        //PATTERN FOR DATE
-        val pattern = SimpleDateFormat("dd/MM/yyyy")
-
+        //SETTING CALENDARVIEW RANGE
         calendar.minDate = System.currentTimeMillis()
         calendar.maxDate = System.currentTimeMillis() + 63113904000 //2 years from current date
+
         //GET SELECTED DATE
         calendar.setOnDateChangeListener { view, year, month, day ->
-            var correctMonth = month + 1
+            val correctMonth = month + 1
             selectedDate = "$day/$correctMonth/$year"
         }
 
@@ -57,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             val Date2 = mDateFormat.parse(selectedEndDate)
             val mDifference = kotlin.math.abs(Date1.time - Date2.time)
 
-            var mDifferenceDates:Long
+            val mDifferenceDates:Long
             if(Date1.time == Date2.time) {
                 mDifferenceDates = 1
             }
@@ -68,6 +69,7 @@ class MainActivity : AppCompatActivity() {
                 mDifferenceDates =
                     mDifference / (24 * 60 * 60 * 1000) / 31 + 2 //calculating days
             }
+
             val mDayDifference = mDifferenceDates.toString()
             if(mDayDifference == "0") {
                 outputText.text = "Data powrotu nie moze byc szybciej od daty wyjazdu!"
