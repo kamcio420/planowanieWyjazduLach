@@ -1,0 +1,48 @@
+APLIKACJA MOBILNA ANDROID STUDIO KOTLIN
+          PLANOWANIE WYJAZDU
+
+Ogólny opis:
+
+Aplikacja pozwala użytkownikowi ustalić date wyjazdu oraz date powrotu poprzez wybranie daty na kalendarzu,
+a następnie zatwierdzaniu jej przyciskiem do tego przeznaczonym. Gdy data wyjazdu oraz data powrotu jest już ustalona,
+użytkownik moze wybrać opcję kliknięcia przycisku 'Zatwierdz', który wyświelti ilość dni które obejmuja wybrany zakres dni.
+Użytkownik ma również opcje przejscia na strone Fly.pl poprzez kliknięcie w link, aby mógł poszukać oferty podróży.
+
+Opis GUI z góry do dołu:
+
+- Tytułowy TextView z napisem 'Planowanie wyjazdu'
+- CalendarView z opcją wyboru daty
+- Trzy przyciski ułożone poziomo obok siebie:
+a) Data wyjazdu
+b) Zatwierdz
+c) Data powrotu
+- TextView z wynikami powyższych przycisków
+- TextView zawierający informacje oraz link do strony
+- Kolor: Zielono-szaro-biały
+
+Działania po uruchomieniu:
+
+- Wywołanie funkcji setupHyperlink()
+- Deklaracja stałych zawierających dostęp do elementów z GUI
+- Deklaracja globalnych zmiennych, które będą użyte do przechowywania 3 dat, ogólnej wybranej, początkowej oraz kończącej
+- Ustawienie początkowej daty kalendarza na obecną i końcowa na 2 lata od daty obecnej
+- Ustawienie Listenera do kalendarza, który tworzy zmienną zawierającą wybraną date w formacie dd/mm/yyyy
+
+Działania aplikacji:
+
+- Możliwość wybierania różnych dat na kalendarzu
+- Przycisk 'Data wyjazdu':
+a) Ustawia date początkową na wybraną przez użytkownika date
+b) Ustawia tekst TextView z wynikiem na ustawioną początkową date
+- Przycisk 'Data powrotu':
+a) Ustawia date końcową na wybraną przez użytkownika date
+b) Ustawia tekst TextView z wynikiem na ustawioną końcową date
+- Przycisk 'Zatwierdz':
+a) Tworzy stała z wzorem na który bedzie zamieniowa obecna data
+b) Tworzy dwie stałe zawierające dwie daty w zmienionym formacie(ma to na celu umożliwienie poprawnego obliczenia czasu pomiedzy wybranymi datami)
+c) Obliczneie zakresu dni i przypisanie go do kolejnej stałej zawierającej wynik
+d) Sprawdzenie czy data powrotu nie jest wcześniej niż data wyjazdu, w takim przypadku poinformowanie użytkownika o niepoprawnym wybraniu dat
+e) Obliczenie dni z milisekund i wyświetlenie ich w TextView z wynikiem
+- Funkcja setupHyperLink():
+a) Tworzy stałą zawierającą tekst z informacją i hiperłączem
+b) Pozwala aplikacji przekierowanie użytkownika na jego domyślną przeglądarke, po czym na strone 'https://fly.pl/szukaj-wycieczek/'
